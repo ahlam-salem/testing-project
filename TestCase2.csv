@@ -1,0 +1,23 @@
+,,,,,,,,,
+ID,Title,Preconditions,Steps,Test Data,Expected Result,Actual Result,Status,Traceability,Notes/Conditions
+TC2-01,Add out-of-stock product (logged-in user),User is logged in. Product A stock = 0 in DB.,"1. Open product A page.
+2. Click 'Add to cart'.","productId=A, qty=1, user=valid_logged_in",System prevents addition: shows 'Out of stock' message; Add button disabled or no change in cart; item not added.,,,AC-2,Out-of-stock defined as quantity = 0 in DB.
+TC2-02,Add out-of-stock product (guest user),User is not logged in. Product A stock = 0.,"1. Open product A page as guest.
+2. Click 'Add to cart'.","productId=A, qty=1, user=guest","Same outcome: item not added; shows 'Out of stock' message. If site requires login before adding, user prompted to log in, then still blocked due to stock.",,,AC-2,Ensures behavior is independent of login state.
+TC2-03,Stale UI cache shows stock >0 but DB stock = 0 (server validation),"Page cache/CDN displays stock = 1, but DB stock = 0 (simulate mismatch).","1. Open product page (shows 1 in stock).
+2. Click 'Add to cart'.","cached_display=1, db_stock=0","Server-side validation rejects addition: respond with 'Sorry, item is out of stock' message; product not added to cart.",,,AC-2,Tests server-side validation (do not rely only on client-side).
+TC2-04,Variant (size/color) out-of-stock,Product B has variants. Selected variant (size M) stock = 0.,"1. Select variant size M on product B page.
+2. Click 'Add to cart'.","productId=B, variant=size M, qty=1",System prevents adding the unavailable variant; shows 'Unavailable' next to variant or prevents selecting it; not added to cart.,,,AC-2,Important for multi-option products.
+TC2-05,Negative/invalid inventory value handling,DB contains invalid negative stock for product C (data error).,"1. Open product C page.
+2. Click 'Add to cart'.","productId=C, db_stock=-5",System treats negative stock as out-of-stock and prevents addition; logs an error for admin/maintenance; no change in cart.,,,AC-2,Checks robustness against bad data.
+TC2-06,Concurrency: two users attempt to add the last item simultaneously,Product D stock = 1. Two users U1 and U2 will attempt to add at same time.,"1. U1 and U2 click 'Add to cart' nearly simultaneously.
+2. Observe outcomes for both users.","productId=D, qty=1 each, U1 and U2 logged in",Only one user succeeds and takes the last item; the other receives 'Out of stock' message and addition is prevented. Inventory must not become negative.,,,AC-2,Recommend automation/load test to validate transactional integrity.
+TC2-07,API: add-to-cart request for out-of-stock product,Product E stock = 0. API accessible.,"1. Send POST /cart/add with {productId:E, qty:1} and valid token.
+2. Observe API response.","API call: POST /cart/add, body={productId:E, qty:1}, token=valid",API returns HTTP 400 or 409 with body {error: 'out_of_stock'}; cart remains unchanged.,,,AC-2,Ensures API-level checks match UI behavior.
+TC2-08,UI: Add to cart button disabled / label when out-of-stock,Product F stock = 0.,"1. Open product F page.
+2. Inspect Add button and availability label.",productId=F,"On page load: 'Out of stock' label visible, 'Add to cart' button disabled or hidden, or alternative action (e.g., 'Notify me') shown. Cannot add to cart.",,,AC-2,Covers UX expectations.
+TC2-09,System config: backorder disabled => cannot add out-of-stock,System setting: backorder = OFF. Product G stock = 0.,"1. Open product G page.
+2. Attempt to add qty=1 to cart.","productId=G, backorder=false",System blocks addition due to no backorders allowed; shows 'Out of stock' or 'Backorder unavailable' message; item not added.,,,AC-2,If backorder = true behavior differs; separate tests required.
+TC2-10,Notify-me / Waitlist behavior when out-of-stock,Product H stock = 0. Site supports 'Notify me'. User logged in.,"1. Open product H page.
+2. Click 'Notify me' or 'Email me when available'.","productId=H, user=logged_in",User is added to the waitlist; confirmation message shown 'You will be notified when available'; product is not added to cart.,,,AC-2,Optional UX feature but related to out-of-stock handling.
+,,,,,,,,,
