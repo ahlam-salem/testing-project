@@ -1,0 +1,51 @@
+ID,Title,Precondition,Steps,Test data,Excepted results
+,New customer make credit card account,customer has not existing account,"1-Go to the sign-up page
+2-Enter valid user details
+3-click sign-up
+4-Make a purchase same day",,Apply 15% discount
+,New customer with a coupon,customer has not existing account,"1-Go to the sign-up page
+2-Enter valid user details
+3-click sign-up
+4-Make a purchase same day",,"Apply 15% discount with message ""You are not allowed to use the coupon because you are a new user"""
+,Existing customer without a loyalty card and without a coupon,"1-customer has an existing account
+2-He does not have a loyalty card or a coupon","1-Go to the login page
+2-Enter email and password
+3-click login 
+4-Make a purchase","Email = ""test@gmail.com""
+Password = ""12345678""",No discount applies
+,Existing customer with loyalty card and without coupon,"1-customer has an existing account
+2-He has a loyalty card but does not have a coupon","1-Go to the login page
+2-Enter email and password
+3-click login
+4-Make a purchase","Email = ""test@gmail.com""
+Password = ""12345678""",Apply 10% discount
+,Existing customer with loyalty card and coupon,"1-customer has an existing account
+2-He has a loyalty card and a coupon","1-Go to the login page
+2-Enter email and password
+3-click login
+4-Make a purchase","Email = ""test@gmail.com""
+Password = ""12345678""",Apply 10% and 20% discount 
+,Existing customer without a loyalty card and with a coupon,"1-customer has an existing account
+2-He does not have a loyalty card and has a coupon","1-Go to the login page
+2-Enter email and password
+3-click login
+4-Make a purchase","Email = ""test@gmail.com""
+Password = ""12345678""",Apply 20% discount
+,Existing customer with a valid loyalty card and expired coupon,"1-customer has an existing account
+2-He does not have a loyalty card and has a coupon","1-Go to the login page
+2-Enter email and password
+3-click login
+4-Make a purchase","Email = ""test@gmail.com""
+Password = ""12345678""","Apply the 15% discount with the message ""This coupon has expired"""
+,Existing customer with an expired loyalty card and a valid coupon,"1-customer has an existing account
+2-He does not have a loyalty card and has a coupon","1-Go to the login page
+2-Enter email and password
+3-click login
+4-Make a purchase","Email = ""test@gmail.com""
+Password = ""12345678""","Apply the 20% discount with the message ""This loyalty card has expired"""
+,Existing customer with an expired loyalty card and coupon,"1-customer has an existing account
+2-He does not have a loyalty card and has a coupon","1-Go to the login page
+2-Enter email and password
+3-click login
+4-Make a purchase","Email = ""test@gmail.com""
+Password = ""12345678""","Message ""This loyalty card and coupon has expired"""
