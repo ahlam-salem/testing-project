@@ -1,0 +1,101 @@
+Bug ID,Module,Title,Description,Severity,Priority,Preconditions,Steps to Reproduce,Expected Result,Actual Result,Attachments,Reported Date,Reported By
+BUG-ADDINST-001,Add Instructions,Missing label for dropdown field in Add Instructions form,"
+The Add Instructions form contains a dropdown list without a label. This causes usability issues, as the user cannot understand the purpose of the dropdown or what the selected value represents",Meduim,High,"1-User must be logged in
+2-User must be on the Add Instructions page","1-Go to System Setting > Instructions > Add Instructions
+2-Verify that all labels for the following fields are present, clear, and correctly displayed""","Every field listed above has a visible, readable, and appropriately descriptive label",There is an untitled drop-down menu between the content and the date inputs.,https://drive.google.com/file/d/1qN6Jl7z1dA7B_dXOUvbqRpDQi8nWh19s/view?usp=sharing,2025/10/24,Ahlam Salem
+BUG-ADDINST-002,Add Instructions,System accepts a title exceeding 100 characters without showing validation error,"When the user enters an instruction title longer than 100 characters, the system should display a validation error and prevent saving.
+However, the system allows saving the instruction and redirects to the instructions list without showing any error message.
+This indicates that the title length validation is not functioning",High,High,"1-User must be logged in
+2-User must be on the Add Instructions page","1-Go to System Setting > Instructions > Add Instructions
+2-Enter a title more than 100 characters
+3-Enter valid content
+4-Select a value from the ""No Label"" dropdown list
+5-Enter a valid date
+6-Select Active status
+7-Click Add Instructions button","The system should display the error message:
+""The title must not be less than or equal to 100 characters""
+and should prevent adding the instruction","No error message appeared, and the instruction was added successfully and redirected to the instructions list.",https://drive.google.com/file/d/1gmWng378UQaISwKeEC5goY9KkSncXPNV,2025/10/24,Ahlam Salem
+BUG-ADDINST-003,Add Instructions,System accepts content exceeding 1000 characters without showing validation error,"When the user submits the Add Instructions form without selecting a value from the dropdown list (the one with no label), the system should show a validation error and prevent saving the instruction.
+However, the system accepts the instruction and redirects to the instructions list without showing any error.
+This indicates that required field validation for the dropdown list is missing.",High,High,"1-User must be logged in
+2-User must be on the Add Instructions page","1-Go to System Setting > Instructions > Add Instructions
+2-Enter a valid title
+3-Enter content more than 1000 characters
+4-Fill other fields with valid values
+5-Click Add Instructions button","The system should display the error message:
+""Content must be less than or equal to 1000 characters""
+and prevent adding the instruction.","No error message appeared, and the instruction was added successfully and redirected to the instructions list.",https://drive.google.com/file/d/1dI23R7D4Pdtg8S-UK5eS3sMmxptb-ITd,2025/10/25,Ahlam Salem
+BUG-ADDINST-004,Add Instructions,System accepts instructions without selecting a value from the dropdown list (no validation message displayed),,Medium,Medium,"1-User must be logged in
+2-User must be on the Add Instructions page","1-Go to System Setting > Instructions > Add Instructions
+2-Enter a valid title
+3-Enter a valid content
+4-Do not select any value from the dropdown list (no label)
+5-Fill the remaining fields with valid data
+6-Click Add Instructions button",An appropriate error message should appear and the system should prevent adding instructions.,"The error message has not appeared, and the instruction has been added successfully.",https://drive.google.com/file/d/1R3gfp4vqEx1s5yTFqoBygTrg-3izIJBs,2025/10/27,Ahlam Salem
+BUG-LISTINST-005,List Instructions,Search button redirects to unrelated page instead of filtering results,"
+When typing in the search field, the system performs a live search and correctly displays matching results. However, once the user clicks the Search button, the system redirects to an unrelated page instead of showing filtered instructions. This indicates an issue with the Search button functionality",High,High,"1-User must be logged in
+2-User is on the List Instructions page","
+1- Go to System Settings > Instructions > List Instructions
+2- Type a keyword in the search field
+3- Click on the Search button
+4- Observe the system behavior",Only instructions containing the entered keyword should be displayed in the list.,"
+The search results appear correctly while typing (live search works).
+However, clicking the Search button redirects the system to another unrelated page instead of displaying filtered results.",https://drive.google.com/file/d/1IJjghDbOvSnCEib4ttdNklQS_xAr7By1,2025/10/29,Ahlam Salem
+BUG-LISTINST-006,List Instructions,A table column has no header label,"In the List Instructions page, the column located between Title and Date does not contain any header label. This makes the table unclear and affects user understanding of the displayed data",Medium,Medium,"1-User must be logged in
+2-User is on the List Instructions page","1-Go to System Settings > Instructions > List Instructions
+2-Observe all table headers
+3-Note the missing header between Title and Date","All table columns should have visible, clear, and meaningful header labels.",A column between Title and Date appears without any header label.,https://drive.google.com/file/d/1jk3BFYP-jPMQnN_NU_WKxwq9r0xgxMV6/view?usp=sharing,2025/10/29,Ahlam Salem
+BUG-ADDCAT-007,Add New Category,System allows adding a category with Arabic name longer than 100 characters,The system does not validate the Arabic Name field length and allows adding a category with a value exceeding 100 characters.,High,High,"1-User must be logged in
+2-User is on the List Instructions page","
+1- Go to System Settings > Documentation Categories > Add New Categories
+2- Enter an Arabic Name longer than 100 characters
+3- Enter valid data in all other fields
+4- Click on Add Category button","Error message would be dispalyed ""Name in arabic must <= 100 char."" and prevent adding category",Error message did not appear and added category,https://drive.google.com/file/d/1tWCTzkihJsDCbpIzKgkrhKPOtZy3kn_p,2025/10/30,Ahlam Salem
+BUG-ADDCAT-0010,Add New Category,System allows adding category with English name exceeding 100 characters,The system fails to validate the English Name field and allows entering more than 100 characters without displaying the required validation message.,High,High,"1-User must be logged in
+2-User is on the List Instructions page","
+1- Go to System Settings > Documentation Categories > Add New Categories
+2- Enter an English Name longer than 100 characters
+3- Fill all other fields with valid data
+4- Click on Add Category button","Error message would be dispalyed ""Name in English must <= 100 char."" and prevent adding category",Error message did not appear and added category,https://drive.google.com/file/d/1aMa1WY632Om8LFl_vzyXADgvJHfYCpJ8,2025/10/30,Ahlam Salem
+BUG-ADDCAT-011,Add New Category,System allows adding a category with an empty English Name field,"The system does not display any validation message when the English Name field is left empty, and it allows the category to be added successfully. The field should be mandatory.",High,High,"1-User must be logged in
+2-User is on the List Instructions page","
+1- Go to System Settings > Documentation Categories > Add New Categories
+2- Leave the English Name field empty
+3- Fill all other fields with valid data
+4- Click on Add Category","Error message would be dispalyed ""Enter the name in English "" and prevent adding category",Error message did not appear and added category,https://drive.google.com/file/d/1sHTIkgQQB3osctij1TOm5KWKqgVwXQwC,2025/10/30,Ahlam Salem
+BUG-ADDCONT-012,Add New Content,System allows adding content with a title exceeding 100 characters,The system does not validate the title length and allows adding content with a title exceeding 100 characters.,High,High,"1-User must be logged in
+2-User is on the Add New Content page","1-Go to System Settings > Documentation Content > Add New Content
+2-Enter title more than 100 characters
+3-Enter content less than 1000 characters
+4-Choose valid value from category
+5-Select active in the status field
+6-click on Add content button","The error message ""The title must not be less than or equal to 100 characters"" should appear, and the system should prevent adding content.","The error message didn't appear, and the content has been added and redirected to the content list",https://drive.google.com/file/d/1lbu5tRC0RCnTz3nOl3e9gQOUXYaI0DNX,2025/10/30,Ahlam Salem
+BUG-ADDCONT-013,Add New Content,System allows adding content with more than 1000 characters,The system does not validate the content length and allows adding content that exceeds 1000 characters.,High,High,"1-User must be logged in
+2-User is on the Add New Content page","
+1- Go to System Settings > Documentation Content > Add New Content
+2- Enter a valid title
+3- Enter content exceeding 1000 characters
+4- Enter valid data in the remaining fields
+5- Click on Add Content button","The error message ""Content must be less than or equal to 1000 characters"" should appear, and the system should prevent adding content.","The error message didn't appear, and the content has been added and redirected to the content list",https://drive.google.com/file/d/1A5afWhTC-BEOIewLiHpbkehh9fz48h_u,2025/10/30,Ahlam Salem
+BUG-ADDCONT-014,Add New Content,Missing error message text when content field is left empty,"When the user submits the form with the content field left empty, the system prevents adding content but displays an empty error box with no validation message.",High,High,"1-User must be logged in
+2-User is on the Add New Content page","
+1- Go to System Settings > Documentation Content > Add New Content
+2- Enter a valid title
+3- Leave the content field empty
+4- Enter valid data in all other fields
+5- Click on Add Instructions button","The error message ""Please enter content' should appear and prevent adding content.","The error box appeared with a red background but no text was displayed, and the content was not added",https://drive.google.com/file/d/15b8K7ojCCL76_wnR2FsWnnhYR9B1wQKB,2025/10/30,Ahlam Salem
+BUG-LISTCONT-015,List Documentation Content,Search button redirects to unrelated page instead of filtering results,"
+When typing in the search field, the system performs a live search and correctly displays matching results. However, once the user clicks the Search button, the system redirects to an unrelated page instead of showing filtered instructions. This indicates an issue with the Search button functionality",High,High,"1-User must be logged in
+2-User is on the List Documentation Content page","
+1- Go to System Settings > Documentation Content > List Documentation Content
+2- Type a keyword in the search field
+3- Click on Search button",Only Content containing the entered keyword should be displayed in the list.,"
+The search results appear correctly while typing (live search works).
+However, clicking the Search button redirects the system to another unrelated page instead of displaying filtered results.",https://drive.google.com/file/d/1la2mPv61VlxDQFNYhoDtapmIyw6LT6EO,2025/11/02,Ahlam Salem
+BUG-LISTCONT-016,List Documentation Content,Edit form does not load data for Inactive content records,"When the user clicks the Update (Edit) button, the system should load the existing content data into the Edit form. While this works correctly for Active content records, the form appears empty for Inactive records, preventing users from updating them. This indicates a logical issue in the Edit functionality.",High,High,"1-User must be logged in
+2-User is on the List Documentation Content page","
+1- Go to System Settings > Documentation Content > List Documentation Content
+2- Click on the Update button for any Inactive content record
+3- Observe the Edit form
+4- Try modifying the data
+5- Click on Update","The edit form should open with all fields pre-filled with the selected content record data, allowing the user to update the content.","Edit form loads data correctly for Active content, but shows empty form for Inactive content",https://drive.google.com/file/d/1NuZ67cdHJZ6rojmn_qRiR4MWjHn3cWOy,2025/11/02,Ahlam Salem
