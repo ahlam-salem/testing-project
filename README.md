@@ -1,63 +1,181 @@
-# testing-project
-This repository contains **test cases** for core user stories in an e-commerce application.  
-Each story includes acceptance criteria, positive and negative scenarios, and decision table coverage.
+README – Manual Testing for Repin System SFA
+Overview
 
----
+This document outlines the manual testing process for the Repin System SFA. It covers key modules and provides guidance on test preparation, execution, and documentation. The goal is to ensure all functionalities work as expected and meet business requirements.
 
-## 📌 User Story 1: Open a Credit Card Account
-**Description:**  
-As a customer, I want to open a credit card account so that I can get discounts on my purchases.
+Modules & Test Scope
+1. Add Orders
 
-**Acceptance Criteria:**
-1. New customers receive a **15% discount** on purchases made on the same day of account creation.  
-2. Existing customers with a **loyalty card** get a **10% discount**.  
-3. Customers with a **coupon** get **20% off**, but coupons **cannot be combined** with the new customer discount.  
-4. Discount amounts are added where applicable (loyalty + coupon).  
+Description:
+Allows users to create new orders from the dashboard.
 
-**Notes:**  
-- Negative cases include expired coupon, invalid loyalty card, and new customer purchasing after first day.  
+Manual Testing Focus:
 
----
+Verify that orders can be added successfully.
 
-## 📌 User Story 2: Add Product to Cart
-**Description:**  
-As a customer, I want to add a product to my cart so that I can buy this product.
+Check mandatory fields validation.
 
-**Acceptance Criteria:**
-1. Product must have at least **one item in stock** to be added.  
-2. If the product is **out of stock**, the user cannot add it to the cart.  
-3. User must click on **Add to Cart button** to perform the action.  
-4. A **confirmation message** is displayed once product is added.  
-5. Notification message contains a **link to the cart page**.  
-6. The user must be **logged in** to add items to the cart.  
+Confirm correct data is saved and displayed in order lists.
 
-**Notes:**  
-- Negative cases: guest user tries to add, out-of-stock product, broken link in notification.  
+Test error handling for invalid input.
 
----
+Preconditions:
 
-## 📌 User Story 3: Contact Us
-**Description:**  
-As a customer, I want to contact the website about a problem with my product.
+User is logged in and has appropriate permissions.
 
-**Acceptance Criteria:**
-1. Email must be **valid** in the format `name@domain.xyz`.  
-2. **Email** is mandatory.  
-3. **Contact name** is mandatory.  
-4. **Message** is mandatory and must not exceed **500 characters**.  
+Products exist in the system for ordering.
 
-**Notes:**  
-- Negative cases: invalid email format, empty mandatory fields, message length > 500 chars.  
+Test Data:
 
----
+Sample products, quantities, and customer information.
 
-## 📂 Repository Contents
-- `test-cases.csv` → Decision table and test cases for all stories.  
-- `README.md` → This documentation.  
+2. Purchase Order
 
----
+Description:
+Handles creation and management of purchase orders.
 
-## 🚀 How to Use
-1. Open `test-cases.csv` to review the detailed test cases.  
-2. Use acceptance criteria above as reference for test coverage.  
-3. Extend test data and scenarios based on edge cases (e.g., expired coupon, invalid email).  
+Manual Testing Focus:
+
+Create, edit, and delete purchase orders.
+
+Verify the correct calculation of totals, taxes, and discounts.
+
+Confirm status updates reflect correctly (e.g., pending, approved).
+
+Preconditions:
+
+Suppliers are preconfigured in the system.
+
+Test Data:
+
+Supplier details, product quantities, unit prices.
+
+3. Gifts in Return Orders
+
+Description:
+Manages gifts associated with returned orders.
+
+Manual Testing Focus:
+
+Validate gift addition to return orders.
+
+Verify return order status updates.
+
+Ensure correct stock adjustments.
+
+Preconditions:
+
+Return orders are created in the system.
+
+Test Data:
+
+Orders eligible for return, gift items, quantities.
+
+4. Add Instructions
+
+Description:
+Allows users to add operational or process instructions.
+
+Manual Testing Focus:
+
+Verify creation and saving of instructions.
+
+Check character limits and formatting.
+
+Validate display in the instructions list.
+
+Preconditions:
+
+User has permission to add instructions.
+
+Test Data:
+
+Sample instruction text.
+
+5. Add New Content
+
+Description:
+Used to add documentation or system content.
+
+Manual Testing Focus:
+
+Verify content is saved, displayed, and editable.
+
+Check file attachments or embedded media (if applicable).
+
+Preconditions:
+
+User has permissions to add content.
+
+Test Data:
+
+Sample documentation content (text, images, files).
+
+6. List Instructions
+
+Description:
+Displays all existing instructions.
+
+Manual Testing Focus:
+
+Ensure all instructions are listed correctly.
+
+Test search, filter, and pagination (if applicable).
+
+Preconditions:
+
+Instructions must exist in the system.
+
+Test Data:
+
+Various instructions with different priorities or types.
+
+7. List Documentation Content
+
+Description:
+Lists all documentation content added in the system.
+
+Manual Testing Focus:
+
+Validate listing accuracy.
+
+Check filters, search, and categories.
+
+Test access permissions.
+
+Preconditions:
+
+Documentation content exists.
+
+Test Data:
+
+Various content types (text, files, images).
+
+8. List Documentation Categories
+
+Description:
+Shows all categories of documentation.
+
+Manual Testing Focus:
+
+Verify all categories are listed.
+
+Test adding, editing, and deleting categories.
+
+Preconditions:
+
+Categories must exist in the system.
+
+Test Data:
+
+Sample categories (e.g., training, policy, SOP).
+
+General Guidelines for Manual Testing
+
+Preparation: Ensure test data is ready and preconditions are met.
+
+Execution: Perform steps as per test cases, recording actual vs expected results.
+
+Reporting: Log defects with detailed steps and screenshots.
+
+Validation: Re-test fixed defects and verify system stability.
